@@ -7,9 +7,11 @@ L.Icon.Default.mergeOptions({
 });
 
 export const availableSightIcon = L.icon({
-    iconUrl: require('../../img/marker_icon_dostepne.png').default
+    iconUrl: require('../../img/marker_icon_dostepne.png').default,
+    iconAnchor: [16, 18]
 });
 
 export const unavailableSightIcon = L.icon({
-    iconUrl: require('../../img/marker_icon_niedostepne.png').default
+    iconUrl: require('../../img/marker_icon_niedostepne.png').default,
+    iconAnchor: [16, 18]
 });
