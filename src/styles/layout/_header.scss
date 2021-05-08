@@ -1,0 +1,42 @@
+.header {
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    padding: 0.25rem 1rem;
+    position: absolute;
+    z-index: 999;
+    background-color: white;
+
+    &__logo {
+        height: 75px;
+        width: 195px;
+        background-image: url('../img/logo.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+.leaflet-top.leaflet-left {
+    top: 15vh;
+
+    .leaflet-control-search.search-exp.leaflet-control {
+        position: relative;
+        top: -25vh;
+        left: 80%;
+        z-index: 10;
+    }
+    
+    .leaflet-control-search.search-exp.leaflet-control {
+        border: none;
+    }
+}
+
+.search-input {
+    width: 300px;
+    height: 100px;
+
+    &::placeholder {
+        color: $placeholder-text;
+    }
+}
+

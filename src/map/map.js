@@ -1,4 +1,3 @@
-
 import $ from 'jquery';
 
 import { baseLayer } from './tileLayers/baseLayer';
@@ -24,7 +23,23 @@ const overlayLayers = {
     "Trasy": tracksLayer,
 };
 
-L.control.layers(baseLayers, overlayLayers).addTo(map);
+L.control.layers(baseLayers, overlayLayers, {
+	collapsed: false,
+	position: "bottomleft"
+}).addTo(map);
+
+$('<h2 class="layer-control__header">Warstwy podkładowe</h2>').insertBefore('div.leaflet-control-layers-base');
+$('<h2 class="layer-control__header">Warstwy</h2>').insertBefore('div.leaflet-control-layers-overlays');
+$('<button class="layer-control__button"><i class="fas fa-arrow-right"></i></button>').appendTo('#map');
+
+const sidePanel = $('.leaflet-bottom.leaflet-left');
+const zoomControls = $('.leaflet-control-zoom.leaflet-bar.leaflet-control');
+const toggleButton = $('.layer-control__button').on('click', () => {
+	sidePanel.toggleClass("closed");
+	toggleButton.toggleClass("closed");
+	zoomControls.toggleClass("closed");
+});
+
 
 //Search control
 L.control.search({
@@ -35,6 +50,7 @@ L.control.search({
 	textCancel: "Anuluj",
 	textPlaceholder: "Wyszukaj",
 	textErr: "Nie znaleziono",
+	collapsed: false,
 	autoCollapse: true,
 	autoType: false,
 	minLength: 2
