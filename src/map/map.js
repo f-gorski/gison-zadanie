@@ -1,4 +1,4 @@
-import L from 'leaflet';
+
 import $ from 'jquery';
 
 import { baseLayer } from './tileLayers/baseLayer';
