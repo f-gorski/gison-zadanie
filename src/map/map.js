@@ -1,4 +1,4 @@
-import L from 'leaflet';
+
 import $ from 'jquery';
 
 import { baseLayer } from './tileLayers/baseLayer';
@@ -25,3 +25,17 @@ const overlayLayers = {
 };
 
 L.control.layers(baseLayers, overlayLayers).addTo(map);
+
+//Search control
+L.control.search({
+	url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
+	propertyName: 'display_name',
+	propertyLoc: ['lat','lon'],
+	marker: { animate: false },
+	textCancel: "Anuluj",
+	textPlaceholder: "Wyszukaj",
+	textErr: "Nie znaleziono",
+	autoCollapse: true,
+	autoType: false,
+	minLength: 2
+}).addTo(map);
