@@ -1,5 +1,9 @@
 @import '../libs/leaflet.css';
 @import '../libs/leaflet-search.src.css';
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
 
 @import './base/reset';
-@import './components/map'
+@import './variables/colors';
+
+@import './layout/header';
+@import './layout/map';
