@@ -11,9 +11,23 @@ const DEFAULT_VIEW = {
 	zoom: 12
 }
 
+//initial view evaluation to use on map load, either from localStorage or if empty from default view constant
+const initialView = JSON.parse(window.localStorage.getItem('savedView')) || DEFAULT_VIEW;
+
 export const map = L.map('map', {
-    center: [DEFAULT_VIEW.lat, DEFAULT_VIEW.lng],
-    zoom: DEFAULT_VIEW.zoom
+    center: [initialView.lat, initialView.lng],
+    zoom: initialView.zoom
+});
+
+//Saving map view to localStorage after view change
+map.on('moveend', () => {
+	const savedView = {
+		lat: map.getCenter().lat,
+		lng: map.getCenter().lng,
+		zoom: map.getZoom(),
+	}
+	
+	window.localStorage.setItem('savedView', JSON.stringify(savedView));
 });
 
 map.addLayer(baseLayer);
