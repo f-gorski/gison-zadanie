@@ -8,6 +8,13 @@
         &.closed {
             transform: translate(0);
         }
+
+        .leaflet-control-default-view {
+            margin-top: 1rem;
+            position: absolute;
+            border: 1px solid $button-border;
+            font-size: 1rem;
+        }
     }
 
     .leaflet-bottom.leaflet-left {
