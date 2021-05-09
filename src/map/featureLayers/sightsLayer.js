@@ -8,7 +8,7 @@ sights.rows.forEach(sight => {
     if(parseFloat(sight.latitude_0) && parseFloat(sight.longitude_0)) {
         const marker = new L.marker([sight.latitude_0, sight.longitude_0], 
             {icon: sight.dostepnosc === "dostępny" ? availableSightIcon : unavailableSightIcon})
-            .bindPopup(sight.opis !== "brak" ? sight.opis : "brak opisu");
+            .bindPopup(sight.opis && sight.opis !== "brak" ? sight.opis : "brak opisu");
         
         sightsFeatures.push(marker);
     }
