@@ -4,9 +4,16 @@ import { baseLayer } from './tileLayers/baseLayer';
 import { sightsLayer } from './featureLayers/sightsLayer';
 import { tracksLayer } from './featureLayers/tracksLayer';
 
+
+const DEFAULT_VIEW = {
+	lat: 50.0646501,
+	lng: 19.9449799,
+	zoom: 12
+}
+
 export const map = L.map('map', {
-    center: [50.0646501, 19.9449799],
-    zoom: 12
+    center: [DEFAULT_VIEW.lat, DEFAULT_VIEW.lng],
+    zoom: DEFAULT_VIEW.zoom
 });
 
 map.addLayer(baseLayer);
@@ -40,7 +47,6 @@ const toggleButton = $('.layer-control__button').on('click', () => {
 	zoomControls.toggleClass("closed");
 });
 
-
 //Search control
 L.control.search({
 	url: 'https://nominatim.openstreetmap.org/search?format=json&q={s}',
@@ -55,3 +61,10 @@ L.control.search({
 	autoType: false,
 	minLength: 2
 }).addTo(map);
+
+//Default view button
+$('<a class="leaflet-control-default-view" href="#" title="Widok domyślny" role="button" aria-label="Widok domyślny"><i class="fas fa-compress-arrows-alt"></i></a>')
+	.appendTo('.leaflet-control-zoom.leaflet-bar.leaflet-control')
+	.on('click', () => {
+	map.setView([DEFAULT_VIEW.lat, DEFAULT_VIEW.lng], DEFAULT_VIEW.zoom);
+});
